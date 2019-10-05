@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/Hhamed91/TruckChat#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mysql": "^2.17.1",
+    "socket.io": "^2.3.0"
   }
 }
