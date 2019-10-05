@@ -18,6 +18,7 @@ CREATE TABLE messages (
     id INT NOT NULL AUTO_INCREMENT,
     messages VARCHAR(255),
     msg_time timestamp,
+    user_id INT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES user(id),
     PRIMARY KEY (id)
 );
@@ -30,9 +31,11 @@ CREATE TABLE chat_data (
     time_stamp timestamp,
     bill_of_lading VARCHAR(255),
     seal_number VARCHAR(255),
-    PRIMARY KEY(id), /* if you don't add this line, you get an error */
+    user_id INT NOT NULL,
+    messages_id INT NOT NULL,
+    PRIMARY KEY(id),
     FOREIGN KEY (user_id) REFERENCES user(id),
-    FOREIGN KEY (messages_id) REFERENCES messages(id),
+    FOREIGN KEY (messages_id) REFERENCES messages(id)
 );
 
 
