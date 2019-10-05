@@ -14,6 +14,15 @@ CREATE TABLE user (
     PRIMARY KEY(id) /* if you don't do line 14, you get an error */
 );
 
+CREATE TABLE messages (
+    id INT NOT NULL AUTO_INCREMENT,
+    messages VARCHAR(255),
+    msg_time timestamp,
+    FOREIGN KEY (user_id) REFERENCES user(id),
+    PRIMARY KEY (id)
+);
+
+
 CREATE TABLE chat_data (
     id INT NOT NULL AUTO_INCREMENT, /* NOT NULL means that this column can not be empty, and it is called a constraint */
     locations VARCHAR(255),
@@ -21,19 +30,9 @@ CREATE TABLE chat_data (
     time_stamp timestamp,
     bill_of_lading VARCHAR(255),
     seal_number VARCHAR(255),
-    PRIMARY KEY(id) /* if you don't add this line, you get an error */
+    PRIMARY KEY(id), /* if you don't add this line, you get an error */
     FOREIGN KEY (user_id) REFERENCES user(id),
     FOREIGN KEY (messages_id) REFERENCES messages(id),
 );
 
-CREATE TABLE messages (
-    id INT NOT NULL AUTO_INCREMENT,
-    question_id INT NOT NULL,
-    friend_id INT NOT NULL,
-    answer INT NOT NULL,
-    FOREIGN KEY (question_id) REFERENCES questions(id),
-    FOREIGN KEY (friend_id) REFERENCES friends(id),
-    PRIMARY KEY (id),
-    CHECK (answer >= 0),
-    CHECK (answer <= 10)
-);
+
